@@ -1,76 +1,94 @@
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cadastro de Colaboradores</title>
+
 <style>
-  body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 20px;
-    height: 100vh;
-    background: 
-      linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), /* camada escura */
-      url("fundo.jpg") no-repeat center center/cover; /* 🔹 usa a imagem da mesma pasta */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-attachment: fixed; /* deixa o fundo fixo */
-  }
+:root {
+  --accent:#2196F3;
+  --dark:#111;
+  --muted:#555;
+}
 
-  .container{
-    max-width: 520px;
-    width: 100%;
-    background: rgba(255,255,255,0.93);
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.3);
-  }
+*{box-sizing:border-box;margin:0;padding:0;}
 
-  h2{text-align:center;margin:0 0 12px;color:#222}
-  label{display:block;margin-top:10px;color:#333}
-  input,select,button{
-    width:100%;
-    padding:10px;
-    margin-top:6px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:15px
-  }
-  button{
-    background:#2196F3;
-    color:#fff;
-    border:0;
-    cursor:pointer;
-    font-weight:bold;
-  }
-  button:hover{opacity:.95}
-  .msg{margin-top:12px;text-align:center;font-weight:600}
-  .msg.success{color:green}
-  .msg.err{color:#c62828}
+body{
+  font-family:Inter, Arial, sans-serif;
+  background: url('fundo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--dark);
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container{
+  max-width:500px;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  padding: 30px 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+
+h2{text-align:center;margin-bottom:20px;color:var(--accent);}
+
+label{display:block;margin-top:10px;color:var(--dark);}
+input, select, button{
+  width:100%;
+  padding:10px;
+  margin-top:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+button{
+  background:var(--accent);
+  color:#fff;
+  border:0;
+  cursor:pointer;
+  font-weight:bold;
+  margin-top:12px;
+}
+button:hover{opacity:.95;}
+
+.msg{
+  margin-top:12px;
+  text-align:center;
+  font-weight:600;
+}
+.msg.success{color:green;}
+.msg.err{color:#c62828;}
 </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Cadastro de Colaboradores</h2>
-    <form id="formCadastro">
-      <label for="nome">Nome completo</label>
-      <input id="nome" type="text" required>
-      <label for="matricula">Matrícula (4–11 dígitos)</label>
-      <input id="matricula" type="text" pattern="\d{4,11}" required placeholder="Somente números">
-      <label for="cargo">Cargo</label>
-      <input id="cargo" type="text" required>
-      <label for="turno">Turno</label>
-      <select id="turno" required>
-        <option value="">Selecione</option>
-        <option>Manhã</option><option>Tarde</option><option>Noite</option>
-      </select>
-      <label for="email">E-mail (obrigatório)</label>
-      <input id="email" type="email" required placeholder="seu@exemplo.com">
-      <button type="submit">Cadastrar</button>
-      <p id="msg" class="msg" style="display:none"></p>
-    </form>
-  </div>
+
+<div class="container">
+  <h2>Cadastro de Colaboradores</h2>
+  <form id="formCadastro">
+    <label for="nome">Nome completo</label>
+    <input id="nome" type="text" required>
+    <label for="matricula">Matrícula (4–11 dígitos)</label>
+    <input id="matricula" type="text" pattern="\d{4,11}" required placeholder="Somente números">
+    <label for="cargo">Cargo</label>
+    <input id="cargo" type="text" required>
+    <label for="turno">Turno</label>
+    <select id="turno" required>
+      <option value="">Selecione</option>
+      <option>Manhã</option>
+      <option>Tarde</option>
+      <option>Noite</option>
+    </select>
+    <label for="email">E-mail (obrigatório)</label>
+    <input id="email" type="email" required placeholder="seu@exemplo.com">
+    <button type="submit">Cadastrar</button>
+    <p id="msg" class="msg" style="display:none"></p>
+  </form>
+</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -145,5 +163,6 @@ function showMsg(text, isError){
   setTimeout(()=> msgEl.style.display='none', 5000);
 }
 </script>
+
 </body>
 </html>
