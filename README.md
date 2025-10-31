@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -8,21 +9,21 @@
 :root {
   --accent:#2196F3;
   --dark:#111;
-  --muted:#555;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 
 body{
   font-family:Inter, Arial, sans-serif;
-  background: url('fundo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: var(--dark);
-  line-height: 1.5;
+  background: 
+    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), /* camada clara para destacar o formulário */
+    url('fundo.jpg') no-repeat center center fixed; /* imagem menor centralizada */
+  background-size: 300px 300px; /* define o tamanho da imagem */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  color: var(--dark);
 }
 
 .container{
