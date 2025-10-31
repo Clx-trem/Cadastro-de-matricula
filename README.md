@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -14,8 +15,8 @@
 
 body{
   font-family:Inter, Arial, sans-serif;
-  background: url('fundo.jpg') no-repeat center center fixed; /* imagem de fundo */
-  background-size: 1000px 1000px; /* tamanho menor da imagem */
+  background: url('fundo.jpg') no-repeat center center fixed;
+  background-size: 1000px 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,36 +24,51 @@ body{
   color: var(--dark);
 }
 
-/* Container com blur */
+/* Container do formulário */
 .container{
   max-width:500px;
   width: 100%;
   background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(8px); /* efeito blur */
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 30px 24px;
   border-radius: 12px;
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
 }
 
-h2{text-align:center;margin-bottom:20px;color:var(--accent);}
+/* Título com fundo igual à tabela */
+.titulo-container {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(5px);
+  padding: 10px 16px;
+  border-radius: 8px;
+  display: inline-block;
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
 label{display:block;margin-top:10px;color:var(--dark);}
-input, select, button{
+input, select{
   width:100%;
   padding:10px;
   margin-top:6px;
   border-radius:6px;
   border:1px solid #ccc;
   font-size:15px;
+  background: #fff; /* fundo normal dos campos */
 }
+
 button{
-  background:var(--accent);
-  color:#fff;
+  width:100%;
+  padding:10px;
+  margin-top:12px;
+  border-radius:8px;
   border:0;
+  background: var(--accent);
+  color:#fff;
   cursor:pointer;
   font-weight:bold;
-  margin-top:12px;
 }
 button:hover{opacity:.95;}
 
@@ -68,7 +84,7 @@ button:hover{opacity:.95;}
 <body>
 
 <div class="container">
-  <h2>Cadastro de Colaboradores</h2>
+  <h2 class="titulo-container">Cadastro de Colaboradores</h2>
   <form id="formCadastro">
     <label for="nome">Nome completo</label>
     <input id="nome" type="text" required>
@@ -96,7 +112,6 @@ import {
   getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* Configuração Firebase */
 const firebaseConfig = {
   apiKey: "AIzaSyCpBiFzqOod4K32cWMr5hfx13fw6LGcPVY",
   authDomain: "ponto-eletronico-f35f9.firebaseapp.com",
