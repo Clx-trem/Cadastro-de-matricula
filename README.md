@@ -15,7 +15,7 @@
 body{
   font-family:Inter, Arial, sans-serif;
   background: url('fundo.jpg') no-repeat center center fixed; /* imagem de fundo */
-  background-size: 700px 700px; /* tamanho menor da imagem */
+  background-size: 1000px 1000px; /* tamanho menor da imagem */
   display: flex;
   justify-content: center;
   align-items: center;
