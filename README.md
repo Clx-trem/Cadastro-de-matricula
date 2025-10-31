@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -15,10 +14,8 @@
 
 body{
   font-family:Inter, Arial, sans-serif;
-  background: 
-    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), /* camada clara para destacar o formulário */
-    url('fundo.jpg') no-repeat center center fixed; /* imagem menor centralizada */
-  background-size: 300px 300px; /* define o tamanho da imagem */
+  background: url('fundo.jpg') no-repeat center center fixed; /* imagem de fundo */
+  background-size: 300px 300px; /* tamanho menor da imagem */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,10 +23,13 @@ body{
   color: var(--dark);
 }
 
+/* Container com blur */
 .container{
   max-width:500px;
   width: 100%;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px); /* efeito blur */
+  -webkit-backdrop-filter: blur(8px);
   padding: 30px 24px;
   border-radius: 12px;
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
