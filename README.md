@@ -29,7 +29,7 @@
       <label for="turno">Turno</label>
       <select id="turno" required>
         <option value="">Selecione</option>
-        <option>Manhã</option><option>Tarde</option><option>Noite</option><option>
+        <option>Manhã</option><option>Tarde</option><option>Noite</option>
       </select>
       <label for="email">E-mail (obrigatório)</label>
       <input id="email" type="email" required placeholder="seu@exemplo.com">
