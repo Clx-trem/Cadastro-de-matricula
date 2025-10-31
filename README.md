@@ -40,9 +40,11 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { 
+  getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* Seu firebaseConfig (ponto-eletronico-f35f9) */
+/* Configuração Firebase */
 const firebaseConfig = {
   apiKey: "AIzaSyCpBiFzqOod4K32cWMr5hfx13fw6LGcPVY",
   authDomain: "ponto-eletronico-f35f9.firebaseapp.com",
@@ -61,6 +63,7 @@ const msgEl = document.getElementById('msg');
 form.addEventListener('submit', async (e)=>{
   e.preventDefault();
   msgEl.style.display='none';
+
   const nome = form.nome.value.trim();
   const matricula = form.matricula.value.trim();
   const cargo = form.cargo.value.trim();
@@ -73,14 +76,33 @@ form.addEventListener('submit', async (e)=>{
   }
 
   try {
-    await addDoc(collection(db, 'colaboradores'), {
+    // 🔍 Verifica se já existe colaborador com essa matrícula ou e-mail
+    const colRef = collection(db, 'colaboradores');
+    const q = query(colRef, where('matricula', '==', matricula));
+    const q2 = query(colRef, where('email', '==', email));
+
+    const [snapMat, snapEmail] = await Promise.all([getDocs(q), getDocs(q2)]);
+
+    if (!snapMat.empty) {
+      showMsg('❌ Matrícula já cadastrada.', true);
+      return;
+    }
+    if (!snapEmail.empty) {
+      showMsg('❌ E-mail já cadastrado.', true);
+      return;
+    }
+
+    // ✅ Cadastra novo colaborador
+    await addDoc(colRef, {
       nome, matricula, cargo, turno, email, criadoEm: serverTimestamp()
     });
+
     showMsg('✅ Cadastro realizado com sucesso!', false);
     form.reset();
+
   } catch (err) {
     console.error(err);
-    showMsg('Erro ao cadastrar: ' + (err.message||err), true);
+    showMsg('Erro ao cadastrar: ' + (err.message || err), true);
   }
 });
 
