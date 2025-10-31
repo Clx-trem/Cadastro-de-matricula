@@ -4,12 +4,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Cadastro de Colaboradores</title>
 <style>
-  body{font-family:Arial, Helvetica, sans-serif;background:#f0f2f5;margin:0;padding:20px}
-  .container{max-width:520px;margin:60px auto;background:#fff;padding:24px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
-  h2{text-align:center;margin:0 0 12px}
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    background: 
+      linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), /* camada escura */
+      url("fundo.jpg") no-repeat center center/cover; /* 🔹 usa a imagem da mesma pasta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed; /* deixa o fundo fixo */
+  }
+
+  .container{
+    max-width: 520px;
+    width: 100%;
+    background: rgba(255,255,255,0.93);
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  }
+
+  h2{text-align:center;margin:0 0 12px;color:#222}
   label{display:block;margin-top:10px;color:#333}
-  input,select,button{width:100%;padding:10px;margin-top:6px;border-radius:6px;border:1px solid #ccc;font-size:15px}
-  button{background:#2196F3;color:#fff;border:0;cursor:pointer}
+  input,select,button{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:15px
+  }
+  button{
+    background:#2196F3;
+    color:#fff;
+    border:0;
+    cursor:pointer;
+    font-weight:bold;
+  }
   button:hover{opacity:.95}
   .msg{margin-top:12px;text-align:center;font-weight:600}
   .msg.success{color:green}
@@ -76,7 +110,6 @@ form.addEventListener('submit', async (e)=>{
   }
 
   try {
-    // 🔍 Verifica se já existe colaborador com essa matrícula ou e-mail
     const colRef = collection(db, 'colaboradores');
     const q = query(colRef, where('matricula', '==', matricula));
     const q2 = query(colRef, where('email', '==', email));
@@ -92,7 +125,6 @@ form.addEventListener('submit', async (e)=>{
       return;
     }
 
-    // ✅ Cadastra novo colaborador
     await addDoc(colRef, {
       nome, matricula, cargo, turno, email, criadoEm: serverTimestamp()
     });
