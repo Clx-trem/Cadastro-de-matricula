@@ -2,6 +2,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cadastro de Colaboradores</title>
+
+<!-- 🔹 ÍCONE DA ABA (LOGO / FAVICON) -->
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
@@ -17,14 +20,13 @@ body{
   background: url('fundo.jpg') no-repeat center center fixed;
   background-size: cover;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   color: var(--dark);
 }
 
-/* 🔹 Fundo da tabela */
+/* 🔹 Caixa principal (tabela visual) */
 .container{
   max-width:500px;
   width: 100%;
@@ -34,22 +36,6 @@ body{
   padding: 30px 24px;
   border-radius: 12px;
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
-}
-
-/* 🔹 Título fora, mas com o mesmo fundo da tabela */
-.titulo-container {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 14px 28px;
-  border-radius: 12px;
-  color: var(--accent);
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  border: 1px solid rgba(255,255,255,0.6);
 }
 
 label{display:block;margin-top:10px;color:var(--dark);}
@@ -87,9 +73,7 @@ button:hover{opacity:.95;}
 </head>
 <body>
 
-<!-- 🔹 Título separado, mas visualmente igual ao container -->
-<h2 class="titulo-container">Cadastro de Colaboradores</h2>
-
+<!-- 🔹 Somente o formulário -->
 <div class="container">
   <form id="formCadastro">
     <label for="nome">Nome completo</label>
@@ -107,6 +91,7 @@ button:hover{opacity:.95;}
     </select>
     <label for="email">E-mail (obrigatório)</label>
     <input id="email" type="email" required placeholder="seu@exemplo.com">
+
     <button type="submit">Cadastrar</button>
     <p id="msg" class="msg" style="display:none"></p>
   </form>
