@@ -16,14 +16,16 @@
 body{
   font-family:Inter, Arial, sans-serif;
   background: url('fundo.jpg') no-repeat center center fixed;
-  background-size: 1000px 1000px;
+  background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   color: var(--dark);
 }
 
+/* 🔹 Fundo da tabela */
 .container{
   max-width:500px;
   width: 100%;
@@ -35,18 +37,19 @@ body{
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
 }
 
-/* 🔹 Fundo do título igual à tabela */
+/* 🔹 Título fora, mas com o mesmo fundo da tabela */
 .titulo-container {
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 14px 24px;
+  padding: 14px 28px;
   border-radius: 12px;
   color: var(--accent);
   font-weight: bold;
+  font-size: 20px;
   text-align: center;
   margin-bottom: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   border: 1px solid rgba(255,255,255,0.6);
 }
 
@@ -85,8 +88,10 @@ button:hover{opacity:.95;}
 </head>
 <body>
 
+<!-- 🔹 Título separado, mas visualmente igual ao container -->
+<h2 class="titulo-container">Cadastro de Colaboradores</h2>
+
 <div class="container">
-  <h2 class="titulo-container">Cadastro de Colaboradores</h2>
   <form id="formCadastro">
     <label for="nome">Nome completo</label>
     <input id="nome" type="text" required>
