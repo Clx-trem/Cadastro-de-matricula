@@ -1,9 +1,9 @@
-<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cadastro de Colaboradores</title>
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 :root {
@@ -24,7 +24,6 @@ body{
   color: var(--dark);
 }
 
-/* Container do formulário */
 .container{
   max-width:500px;
   width: 100%;
@@ -36,18 +35,18 @@ body{
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
 }
 
-/* Título com fundo tipo tabela */
+/* 🔹 Fundo do título igual à tabela */
 .titulo-container {
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 12px 20px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 14px 24px;
   border-radius: 12px;
-  display: inline-block;
   color: var(--accent);
   font-weight: bold;
+  text-align: center;
   margin-bottom: 24px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   border: 1px solid rgba(255,255,255,0.6);
 }
 
@@ -59,7 +58,7 @@ input, select{
   border-radius:6px;
   border:1px solid #ccc;
   font-size:15px;
-  background: #fff; /* fundo normal dos campos */
+  background: #fff;
 }
 
 button{
