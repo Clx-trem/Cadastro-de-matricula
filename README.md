@@ -2,23 +2,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cadastro de Colaboradores</title>
+<title>Cadastro</title>
 
-<!-- 🔹 ÍCONE DA ABA (LOGO / FAVICON) -->
+<!-- 🔹 Logo da aba (favicon) -->
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
 :root {
-  --accent:#2196F3;
-  --dark:#111;
+  --accent: #2196F3;
+  --dark: #111;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-body{
-  font-family:Inter, Arial, sans-serif;
+body {
+  font-family: Inter, Arial, sans-serif;
   background: url('fundo.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-size: 1000px 1000px; /* 🔹 tamanho fixo e centralizado do fundo */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,55 +30,79 @@ body{
   color: var(--dark);
 }
 
-/* 🔹 Caixa principal (tabela visual) */
-.container{
-  max-width:500px;
+/* Container do formulário */
+.container {
+  max-width: 500px;
   width: 100%;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 30px 24px;
   border-radius: 12px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
 }
 
-label{display:block;margin-top:10px;color:var(--dark);}
-input, select{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border-radius:6px;
-  border:1px solid #ccc;
-  font-size:15px;
+/* Título tipo tabela */
+.titulo-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: inline-block;
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: var(--dark);
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
   background: #fff;
 }
 
-button{
-  width:100%;
-  padding:10px;
-  margin-top:12px;
-  border-radius:8px;
-  border:0;
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 0;
   background: var(--accent);
-  color:#fff;
-  cursor:pointer;
-  font-weight:bold;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
 }
-button:hover{opacity:.95;}
 
-.msg{
-  margin-top:12px;
-  text-align:center;
-  font-weight:600;
+button:hover {
+  opacity: .95;
 }
-.msg.success{color:green;}
-.msg.err{color:#c62828;}
+
+.msg {
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.msg.success { color: green; }
+.msg.err { color: #c62828; }
 </style>
 </head>
 <body>
 
-<!-- 🔹 Somente o formulário -->
 <div class="container">
+  <h2 class="titulo-container">Cadastro de Colaboradores</h2>
   <form id="formCadastro">
     <label for="nome">Nome completo</label>
     <input id="nome" type="text" required>
@@ -91,7 +119,6 @@ button:hover{opacity:.95;}
     </select>
     <label for="email">E-mail (obrigatório)</label>
     <input id="email" type="email" required placeholder="seu@exemplo.com">
-
     <button type="submit">Cadastrar</button>
     <p id="msg" class="msg" style="display:none"></p>
   </form>
