@@ -36,16 +36,19 @@ body{
   box-shadow: 0 6px 25px rgba(0,0,0,0.2);
 }
 
-/* Título com fundo igual à tabela */
+/* Título com fundo tipo tabela */
 .titulo-container {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(5px);
-  padding: 10px 16px;
-  border-radius: 8px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  border-radius: 12px;
   display: inline-block;
   color: var(--accent);
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.6);
 }
 
 label{display:block;margin-top:10px;color:var(--dark);}
