@@ -1,88 +1,78 @@
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cadastro de Colaboradores</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <!-- 🔹 Ícone do navegador (favicon) -->
+  <link rel="icon" type="image/x-icon" href="logo.ico">
 
-<style>
-:root {
-  --accent:#2196F3;
-  --dark:#111;
-}
+  <title>Cadastro de Colaboradores</title>
 
-*{box-sizing:border-box;margin:0;padding:0;}
+  <style>
+  :root {
+    --accent:#2196F3;
+    --dark:#111;
+  }
 
-body{
-  font-family:Inter, Arial, sans-serif;
-  background: url('fundo.jpg') no-repeat center center fixed;
-  background-size: 1000px 1000px; /* 🔹 ajuste aqui o tamanho do fundo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: var(--dark);
-}
+  *{box-sizing:border-box;margin:0;padding:0;}
 
-/* 🔹 Logo no canto */
-.logo {
-  position: absolute;
-  top: 30px;     /* distância do topo */
-  left: 30px;    /* distância da esquerda */
-  width: 120px;  /* 🔹 ajuste o tamanho da logo aqui */
-  height: auto;
-}
+  body{
+    font-family:Inter, Arial, sans-serif;
+    background: url('fundo.jpg') no-repeat center center fixed;
+    background-size: 1000px 1000px; /* 🔹 ajuste o tamanho do fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--dark);
+  }
 
-/* Container do formulário */
-.container{
-  max-width:500px;
-  width: 100%;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 30px 24px;
-  border-radius: 12px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
-}
+  .container{
+    max-width:500px;
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+  }
 
-label{display:block;margin-top:10px;color:var(--dark);}
-input, select{
-  width:100%;
-  padding:10px;
-  margin-top:6px;
-  border-radius:6px;
-  border:1px solid #ccc;
-  font-size:15px;
-  background: #fff;
-}
+  label{display:block;margin-top:10px;color:var(--dark);}
+  input, select{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:15px;
+    background: #fff;
+  }
 
-button{
-  width:100%;
-  padding:10px;
-  margin-top:12px;
-  border-radius:8px;
-  border:0;
-  background: var(--accent);
-  color:#fff;
-  cursor:pointer;
-  font-weight:bold;
-}
-button:hover{opacity:.95;}
+  button{
+    width:100%;
+    padding:10px;
+    margin-top:12px;
+    border-radius:8px;
+    border:0;
+    background: var(--accent);
+    color:#fff;
+    cursor:pointer;
+    font-weight:bold;
+  }
+  button:hover{opacity:.95;}
 
-.msg{
-  margin-top:12px;
-  text-align:center;
-  font-weight:600;
-}
-.msg.success{color:green;}
-.msg.err{color:#c62828;}
-</style>
+  .msg{
+    margin-top:12px;
+    text-align:center;
+    font-weight:600;
+  }
+  .msg.success{color:green;}
+  .msg.err{color:#c62828;}
+  </style>
 </head>
 <body>
 
-<!-- 🔹 Logo -->
-<img src="logo.png" alt="Logo" class="logo">
-
-<!-- 🔹 Formulário -->
 <div class="container">
   <form id="formCadastro">
     <label for="nome">Nome completo</label>
