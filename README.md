@@ -2,12 +2,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
+  
+  <!-- 🔹 Ícone do navegador (favicon) -->
   <link rel="icon" type="image/x-icon" href="logo.ico">
-  <title>Cadastro de Colaboradores</title>
 
-  <!-- Biblioteca para gerar QR Codes -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <title>Cadastro de Colaboradores</title>
 
   <style>
   :root {
@@ -20,7 +19,7 @@
   body{
     font-family:Inter, Arial, sans-serif;
     background: url('fundo.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background-size: 1000px 1000px; /* 🔹 ajuste o tamanho do fundo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +32,7 @@
     width: 100%;
     background: rgba(255,255,255,0.7);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 30px 24px;
     border-radius: 12px;
     box-shadow: 0 6px 25px rgba(0,0,0,0.2);
@@ -69,12 +69,6 @@
   }
   .msg.success{color:green;}
   .msg.err{color:#c62828;}
-
-  #qrcodeContainer{
-    text-align:center;
-    margin-top:20px;
-    display:none;
-  }
   </style>
 </head>
 <body>
@@ -99,12 +93,6 @@
     <button type="submit">Cadastrar</button>
     <p id="msg" class="msg" style="display:none"></p>
   </form>
-
-  <!-- Área do QR Code -->
-  <div id="qrcodeContainer">
-    <h3>QR Code da Matrícula</h3>
-    <canvas id="qrcodeCanvas"></canvas>
-  </div>
 </div>
 
 <script type="module">
@@ -113,14 +101,13 @@ import {
   getFirestore, collection, addDoc, query, where, getDocs, serverTimestamp 
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Firebase Config
 const firebaseConfig = {
-  apiKey: "AIzaSyCiZXZ9vW-4L471ej9jWg_1MAStD44pTqo",
-  authDomain: "ponto-qrcode-29f9d.firebaseapp.com",
-  projectId: "ponto-qrcode-29f9d",
-  storageBucket: "ponto-qrcode-29f9d.firebasestorage.app",
-  messagingSenderId: "900058332385",
-  appId: "1:900058332385:web:2ecdabb9b4027bc3748ba0"
+  apiKey: "AIzaSyCpBiFzqOod4K32cWMr5hfx13fw6LGcPVY",
+  authDomain: "ponto-eletronico-f35f9.firebaseapp.com",
+  projectId: "ponto-eletronico-f35f9",
+  storageBucket: "ponto-eletronico-f35f9.firebasestorage.app",
+  messagingSenderId: "208638350255",
+  appId: "1:208638350255:web:63d016867a67575b5e155a"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -151,8 +138,14 @@ form.addEventListener('submit', async (e)=>{
 
     const [snapMat, snapEmail] = await Promise.all([getDocs(q), getDocs(q2)]);
 
-    if (!snapMat.empty) return showMsg('❌ Matrícula já cadastrada.', true);
-    if (!snapEmail.empty) return showMsg('❌ E-mail já cadastrado.', true);
+    if (!snapMat.empty) {
+      showMsg('❌ Matrícula já cadastrada.', true);
+      return;
+    }
+    if (!snapEmail.empty) {
+      showMsg('❌ E-mail já cadastrado.', true);
+      return;
+    }
 
     await addDoc(colRef, {
       nome, matricula, cargo, turno, email, criadoEm: serverTimestamp()
@@ -161,18 +154,9 @@ form.addEventListener('submit', async (e)=>{
     showMsg('✅ Cadastro realizado com sucesso!', false);
     form.reset();
 
-    // 🔹 Gera o QR Code da matrícula
-    const qrContainer = document.getElementById('qrcodeContainer');
-    const qrCanvas = document.getElementById('qrcodeCanvas');
-    qrContainer.style.display = 'block';
-
-    QRCode.toCanvas(qrCanvas, matricula, { width: 180 }, (err)=>{
-      if (err) console.error(err);
-    });
-
   } catch (err) {
     console.error(err);
-    showMsg('Erro ao cadastrar: ' + err.message, true);
+    showMsg('Erro ao cadastrar: ' + (err.message || err), true);
   }
 });
 
