@@ -167,6 +167,10 @@ function showMsg(text, isError){
   setTimeout(()=> msgEl.style.display='none', 5000);
 }
 </script>
-
+<body>
+    <!-- TODO O SEU SITE AQUI -->
+    <footer style="text-align:center; margin-top:20px; padding:10px; font-size:14px; color:#555;">
+        Criado por CLX
+    </footer>
 </body>
 </html>
